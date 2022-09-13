@@ -4,10 +4,8 @@ const { queryCatcher } = require("../utils");
 const getFullUser =
   (db) =>
   async ({ email }) => {
-    const database = await db;
-
     return await queryCatcher(
-      database.maybeOne,
+      db.maybeOne,
       "getFullUser"
     )(selectFullUser({ email }));
   };
@@ -24,10 +22,8 @@ const createUser =
       };
     }
 
-    const database = await db;
-
     return await queryCatcher(
-      database.query,
+      db.query,
       "createUser"
     )(insertUser({ email, password, first_name }));
   };
