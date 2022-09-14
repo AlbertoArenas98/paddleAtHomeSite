@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { authorizer, checker } = require("../../middlewares");
 
 const forms = {
-  register: ['email', 'password', 'first_name'],
+  register: ['email', 'password', 'first_name', 'cities', 'group_type', 'day_time', 'levels' ],
   login: ['email', 'password']
 }
 module.exports = (db) => {

@@ -10,9 +10,9 @@ DELETE FROM users
 WHERE email = 'albertoarennass@gmail.com';
 
 INSERT INTO users (
-    first_name, email, password
+    first_name, email, password, cities_id, group_type_id, day_time_id, levels_id
 ) VALUES (
-    'Alberto', 'albertoarennass@gmail.com', '1234'
+    'Alberto', 'albertoarennass@gmail.com', '1234', (SELECT id FROM cities WHERE name = 'Majadahonda'), (SELECT id FROM group_type WHERE type = 'colective'), (SELECT id FROM day_time WHERE time = 'mornings'), (SELECT id FROM levels WHERE level = 'initial')
 ) ON CONFLICT DO NOTHING;
 
 INSERT INTO cities (

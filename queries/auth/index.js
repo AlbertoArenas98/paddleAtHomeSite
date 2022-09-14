@@ -12,7 +12,7 @@ const getFullUser =
 
 const createUser =
   (db) =>
-  async ({ email, password, first_name }) => {
+  async ({ email, password, first_name, cities, group_type, day_time, levels }) => {
     const user = await getFullUser(db)({ email });
 
     if (user.data) {
@@ -25,7 +25,7 @@ const createUser =
     return await queryCatcher(
       db.query,
       "createUser"
-    )(insertUser({ email, password, first_name }));
+    )(insertUser({ email, password, first_name, cities, group_type, day_time, levels }));
   };
 
   const getCorrectUser = (db) => async ({ email, compareFn }) => {

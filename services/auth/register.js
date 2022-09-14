@@ -4,13 +4,17 @@ const { register } = require('../../errors/auth');
 const errors = require('../../errors/commons');
 
 module.exports = db => async (req, res, next) => {
-  const { email, password, first_name } = req.body;
+  const { email, password, first_name, cities, group_type, day_time, levels } = req.body;
 
-  console.log(email, password, first_name)
+  
   const queryResult = await createUser(db)({
     email,
     password: await hash.encrypt(password),
-    first_name
+    first_name,
+    cities,
+    group_type,
+    day_time,
+    levels
   });
   if (!queryResult.ok) return next(register[queryResult.code] || errors[500]);
 
