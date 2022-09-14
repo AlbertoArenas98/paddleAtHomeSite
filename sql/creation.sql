@@ -1,11 +1,11 @@
 
 DROP TABLE IF EXISTS class_user;
 DROP TABLE IF EXISTS group_class; 
+DROP TABLE IF EXISTS users; 
 DROP TABLE IF EXISTS cities;
 DROP TABLE IF EXISTS levels;
 DROP TABLE IF EXISTS group_type;
 DROP TABLE IF EXISTS day_time;
-DROP TABLE IF EXISTS users; 
 DROP EXTENSION IF EXISTS "uuid-ossp";
 
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
@@ -36,16 +36,16 @@ CREATE TABLE IF NOT EXISTS users (
   first_name VARCHAR(20) NOT NULL,
   email TEXT UNIQUE NOT NULL,
   password TEXT NOT NULL,
-    cities_id uuid REFERENCES cities
+  cities_id uuid REFERENCES cities(id)
       ON UPDATE CASCADE
       ON DELETE SET NULL,
-  group_type_id uuid REFERENCES group_type
+  group_type_id uuid REFERENCES group_type(id)
       ON UPDATE CASCADE
       ON DELETE SET NULL,
-  day_time_id uuid REFERENCES day_time
+  day_time_id uuid REFERENCES day_time(id)
       ON UPDATE CASCADE
       ON DELETE SET NULL,
-  levels_id uuid REFERENCES levels
+  levels_id uuid REFERENCES levels(id)
       ON UPDATE CASCADE
       ON DELETE SET NULL
 );
