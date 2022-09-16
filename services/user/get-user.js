@@ -6,10 +6,11 @@ module.exports = (db) => async (_, res, next) => {
 
   const queryResult = await getFullUser(db)({ email });
 
-  console.log(queryResult)
   if (!queryResult.ok) return next(errors[400]);
 
-  const { firstName, email: mail, name, type, time, level} = queryResult.data;
+  const { firstName, email: mail, name, type, time, level } = queryResult.data;
+
+  console.log(queryResult.data)
 
   res.status(200).json({
     success: true,

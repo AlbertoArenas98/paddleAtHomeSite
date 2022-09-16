@@ -13,7 +13,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE IF NOT EXISTS cities (
   id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
-  name VARCHAR(20) NOT NULL
+  city VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS group_type (
